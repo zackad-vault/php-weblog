@@ -1,0 +1,23 @@
+{
+    "name": "zackad/weblog",
+    "description": "Weblog with slim framework.",
+    "keywords": ["microframework", "blog", "markdown", "template"],
+    "homepage": "https://github.com/zackad/weblog",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "zackad",
+            "email": "zackad.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "slim/slim": "^3.1",
+        "monolog/monolog": "^1.17",
+        "twig/twig": "^1.30",
+        "jralph/twig-markdown": "^1.0"
+    },
+	"scripts": {
+        "start": "php -S 0.0.0.0:8080 -t public public/index.php"
+	}
+}

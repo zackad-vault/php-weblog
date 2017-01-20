@@ -2,4 +2,7 @@
 /logs/*
 !/logs/README.md
 
+.sass-cache
+
 src/settings.php
+src/settings-*
