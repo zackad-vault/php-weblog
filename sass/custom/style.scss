@@ -1,9 +1,7 @@
 // Custom style for overriding skeleton css and addional style
 // ____________________________________________________________________________
-
 @import "Color";
 @import "Mobile";
-
 html,
 body {
   margin: 0;
@@ -46,77 +44,92 @@ body {
   background: $white;
   z-index: 99;
   border-bottom: .2rem solid $color_log_cabin_approx;
-}
-.navbar-list {
-  list-style: none;
-  margin-bottom: 0;
-  margin-top: 0;
-}
-.navbar-item {
-  display: none;
-  position: relative;
-  margin-bottom: 0;
-  &.active {
-    display: block;
+  .navbar-list {
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
   }
-  &.brand{
-    letter-spacing: .2rem;
-  }
-}
-.navbar-link {
-  display: block;
-  font-weight: 600;
-  margin-left: 0px;
-  padding-left: 15px;
-  text-decoration: none;
-  line-height: 3rem;
-  color: $color_log_cabin_approx;
-  width: 100%;
-  &.active {
-    background: $color_gallery_approx;
-    color: $color_picton_blue_approx;
-  }
-  &:hover {
-    background: $color_gallery;
-  }
-}
-
-.brand {
-  @extend .navbar-item;
-  display: block;
-  border-bottom: .1rem solid $color_mountain_mist_approx;
-  .navbar-link {
-    display: inline;
-    width: auto;
-    margin-left: 15px;
-    padding-left: 0px;
-    &.hamburger {
-      padding: {
-        left: 10px;
-        right: 10px;
-      }
-      float: right;
-      margin-right: 10px;
+  .navbar-item {
+    display: none;
+    position: relative;
+    margin-bottom: 0;
+    &.active {
+      display: block;
+    }
+    &.brand {
+      letter-spacing: .2rem;
     }
   }
-}
-
-.popover-list{
-  @extend .navbar-list;
-  margin-left: 0px;
-}
-.popover-item {
-  @extend .navbar-item;
-  display: block;
-}
-.popover-link {
-  @extend .navbar-link;
-  font-weight: 500;
-  padding-left: 30px;
+  .navbar-link {
+    display: block;
+    font-weight: 600;
+    margin-left: 0px;
+    padding-left: 15px;
+    text-decoration: none;
+    line-height: 3rem;
+    color: $color_log_cabin_approx;
+    width: 100%;
+    &.active {
+      background: $color_gallery_approx;
+      color: $color_picton_blue_approx;
+    }
+    &:hover {
+      background: $color_gallery;
+    }
+  }
+  .brand {
+    @extend .navbar-item;
+    display: block;
+    border-bottom: .1rem solid $color_mountain_mist_approx;
+    .navbar-link {
+      display: inline;
+      width: auto;
+      margin-left: 15px;
+      padding-left: 0px;
+      &.hamburger {
+        padding: {
+          left: 10px;
+          right: 10px;
+        }
+        float: right;
+        margin-right: 10px;
+      }
+    }
+  }
+  .popover-list {
+    @extend .navbar-list;
+    margin-left: 0px;
+  }
+  .popover-item {
+    @extend .navbar-item;
+    display: block;
+  }
+  .popover-link {
+    @extend .navbar-link;
+    font-weight: 500;
+    padding-left: 30px;
+  }
 }
 
 .navbar-mobile + .container {
   margin-top: 40px;
+}
+
+.post {
+  .post-header {
+    .title {
+      font-size: 4rem;
+      font-weight: 800;
+    }
+    .meta {
+      > * {
+        display: inline;
+        font-size: .8em;
+        color: $color_mountain_mist_approx;
+        margin-right: 15px;
+      }
+    }
+  }
 }
 
 footer {
@@ -148,6 +161,9 @@ footer {
   .navbar-mobile {
     display: none;
   }
+  .navbar-mobile + .container {
+    margin-top: 0px;
+  }
   .navbar {
     display: block;
     width: 100%;
@@ -178,6 +194,7 @@ footer {
     margin-bottom: 0;
   }
   .navbar-item {
+    display: block;
     position: relative;
     float: left;
     margin-bottom: 0;
@@ -226,6 +243,7 @@ footer {
     filter: drop-shadow(0 0 6px $black_10);
     &.open {
       display: block;
+      z-index: 99;
     }
   }
   .popover-item {
