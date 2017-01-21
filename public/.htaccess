@@ -6,5 +6,28 @@ RewriteEngine On
 #
 # RewriteBase /
 
+# Redirect to www subdomain
+
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
+# Redirect to https protocol
+
+# RewriteCond %{HTTPS} off
+# RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
+# Slim framework entry point
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [QSA,L]
+
+
+# Cache Expiration management
+
+# ExpiresActive On
+# ExpiresDefault "access plus 2 weeks"
+# ExpiresByType text/css "access plus 1 hours"
+# ExpiresByType text/javascript "access plus 1 hours"
+# ExpiresByType application/javascript "access plus 1 hours"
