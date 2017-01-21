@@ -4,5 +4,7 @@
 
 .sass-cache
 
+public/.htaccess-*
+
 src/settings.php
 src/settings-*
