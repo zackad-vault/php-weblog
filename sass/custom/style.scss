@@ -114,6 +114,12 @@ body {
 .navbar-mobile + .container {
   margin-top: 40px;
 }
+.post-list {
+  .post-header .title a {
+    font-size: 2.5rem;
+    font-weight: 500;
+  }
+}
 
 .post {
   .post-header {
