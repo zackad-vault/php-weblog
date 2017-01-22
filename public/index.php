@@ -25,6 +25,12 @@ require __DIR__ . '/../src/middleware.php';
 
 // Register routes
 require __DIR__ . '/../src/routes.php';
+foreach (scandir(dirname(__DIR__) . '/src/controllers') as $filename) {
+    $path = dirname(__DIR__) . '/src/controllers' . '/' . $filename;
+    if (is_file($path)) {
+        require_once $path;
+    }
+}
 
 // Run app
 $app->run();
