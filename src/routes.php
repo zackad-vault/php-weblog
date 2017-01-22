@@ -9,7 +9,7 @@ $app->get('/', function ($request, $response, $args) {
     return $this->view->render('index.twig', $args);
 });
 
-$app->get('/post/{type:latest|popular|random}/', function ($request, $response, $args) {
+$app->get('/{type:latest|popular|random}/', function ($request, $response, $args) {
     $this->logger->info("'/post/".$args['type']."/' route");
     $article = new Models\Article;
     $data['type'] = $args['type'];
