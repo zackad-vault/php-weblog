@@ -26,9 +26,27 @@ pre {
 .text-center {
   text-align: center;
 }
+.category .tag {
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  background: $color_gallery;
+  border: {
+    top-left-radius: 5px;
+    bottom-right-radius: 5px;
+  }
+  a {
+    text-decoration: none;
+    color: $color_log_cabin_approx;
+  }
+}
 
 .container {
   max-width: 800px;
+}
+.main-content,
+.markdown-body {
+  margin: 15px auto;
 }
 
 .header {
