@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d1b0bdb6736227a7dbba7df67db89bc3",
-    "content-hash": "49f75560c67aa564f0c7688c5b0203c3",
+    "hash": "26c6d0f4f7bf8bb85a25a0ede8863cb2",
+    "content-hash": "b8ec13336a13e22a27876260b62d2f6b",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -546,16 +546,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.30.0",
+            "version": "v1.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "c6ff71094fde15d12398eaba029434b013dc5e59"
+                "reference": "ddc9e3e20ee9c0b6908f401ac8353635b750eca7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/c6ff71094fde15d12398eaba029434b013dc5e59",
-                "reference": "c6ff71094fde15d12398eaba029434b013dc5e59",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ddc9e3e20ee9c0b6908f401ac8353635b750eca7",
+                "reference": "ddc9e3e20ee9c0b6908f401ac8353635b750eca7",
                 "shasum": ""
             },
             "require": {
@@ -563,12 +563,12 @@
             },
             "require-dev": {
                 "symfony/debug": "~2.7",
-                "symfony/phpunit-bridge": "~3.2@dev"
+                "symfony/phpunit-bridge": "~3.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.30-dev"
+                    "dev-master": "1.31-dev"
                 }
             },
             "autoload": {
@@ -603,7 +603,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-12-23 11:06:22"
+            "time": "2017-01-11 19:36:15"
         }
     ],
     "packages-dev": [],
