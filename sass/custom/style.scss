@@ -8,6 +8,25 @@ body {
   padding: 0;
 }
 
+// Typography and utilities
+// ____________________________________________________________________________
+textarea,
+pre {
+  -moz-tab-size : 4;
+    -o-tab-size : 4;
+       tab-size : 4;
+}
+.align-center {
+  float: none;
+  margin: 0 auto;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+
 .container {
   max-width: 800px;
 }
@@ -144,12 +163,6 @@ body {
       }
     }
   }
-}
-textarea,
-pre {
-  -moz-tab-size : 4;
-    -o-tab-size : 4;
-       tab-size : 4;
 }
 
 footer {
@@ -337,4 +350,3 @@ footer {
     }
   }
 }
-
