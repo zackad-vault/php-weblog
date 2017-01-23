@@ -9,23 +9,6 @@ $container['auth'] = function ($c) {
     return $auth;
 };
 
-// view twig renderer
-// $container['view'] = function ($c) {
-//     $settings = $c->get('settings')['twig'];
-//     $loader = new Twig_Loader_Filesystem($settings['template_path']);
-//     $view = new Twig_Environment($loader, [
-//         'debug' => $settings['debug'],
-//     ]);
-//     $view->addExtension(new Twig_Extension_Debug);
-//     $view->addExtension(new Jralph\Twig\Markdown\Extension(
-//         new Jralph\Twig\Markdown\Parsedown\ParsedownExtraMarkdown
-//     ));
-//     $view->addGlobal("debug", $settings['debug']);
-//     $view->addGlobal("session", $_SESSION);
-
-//     return $view;
-// };
-
 // Register Twig View helper
 $container['view'] = function ($c) {
     $settings = $c->get('settings')['twig'];
