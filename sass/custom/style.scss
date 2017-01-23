@@ -81,18 +81,26 @@ body {
     @extend .navbar-item;
     display: block;
     border-bottom: .1rem solid $color_mountain_mist_approx;
+    span {
+      margin-right: 10px;
+    }
     .navbar-link {
       display: inline;
       width: auto;
       margin-left: 15px;
       padding-left: 0px;
-      &.hamburger {
+      &.hamburger,
+      &.search {
         padding: {
           left: 10px;
           right: 10px;
+          top: .4rem;
+          bottom: .4rem;
         }
-        float: right;
-        margin-right: 10px;
+        margin: {
+          right: 0px;
+          left: 0px;
+        }
       }
     }
   }
@@ -154,6 +162,9 @@ footer {
 }
 
 @media(min-width: 550px) {
+  .container {
+    width: 90%;
+  }
   .header {
     margin-top: 18rem;
   }
