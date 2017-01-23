@@ -56,9 +56,5 @@ $app->get('/tags[/]', function ($request, $response, $args) {
     $this->logger->info("'/tags' route");
     $data = [];
     $data['title'] = 'Categories';
-    return $this->view->render('post-list.twig', $data);
-});
-
-$app->get('/test/[{base}/]', function ($request, $response, $args) {
-    return $this->view->render('base-' . $args['base'] . '.twig', $args);
+    return $this->view->render($response, 'post-list.twig', $data);
 });
