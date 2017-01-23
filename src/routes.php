@@ -52,9 +52,20 @@ $app->get('/post/[{id:[0-9]+}/[{slug}/]]', function ($request, $response, $args)
     return $this->view->render($response, 'post.twig', $data);
 })->setName('article');
 
-$app->get('/tags[/]', function ($request, $response, $args) {
+$app->get('/tags/[{tag_name}/]', function ($request, $response, $args) {
     $this->logger->info("'/tags' route");
+    $tags = new Models\Tags;
+    $article = new Models\Article;
     $data = [];
     $data['title'] = 'Categories';
-    return $this->view->render($response, 'post-list.twig', $data);
+
+    // Render into post list
+    if (isset($args['tag_name'])) {
+        $data['title'] = ucfirst($args['tag_name']);
+        $data['flash'] = 'Post with tag "' . $args['tag_name'] . '"';
+        $data['postlist'] = $article->getItemByTagName($args['tag_name']);
+        return $this->view->render($response, 'post-list.twig', $data);
+    }
+    $data['tags'] = $tags->getAllTags();
+    return $this->view->render($response, 'tags-list.twig', $data);
 });
