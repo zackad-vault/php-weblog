@@ -11,19 +11,31 @@ $app->get('/', function ($request, $response, $args) {
 
 $app->get('/{type:latest|popular|random}/', function ($request, $response, $args) {
     $this->logger->info("'/post/".$args['type']."/' route");
+    
     $article = new Models\Article;
     $data['type'] = $args['type'];
+
+    if ($data['type'] === 'random') {
+        $randomArticle = $article->getRandomArticle();
+        $id = $randomArticle['id'];
+        $slug = $article->slugify($randomArticle['title']);
+        $redirectPath = $this->router->pathFor('article', ['id' => $id]) . $slug . '/';
+        return $response->withRedirect((string)$redirectPath, 302);
+    }
+
     $data['postlist'] = $article->getItem($args['type']);
+
     foreach ($data['postlist'] as $key => $value) {
         $data['postlist'][$key]['slug'] = $article->slugify($value['title']);
     }
+
     return $this->view->render($response, 'post-list.twig', $data);
 });
 
 $app->get('/post/[{id:[0-9]+}/[{slug}/]]', function ($request, $response, $args) {
     $this->logger->info("'/post' route");
 
-    // Initiate a
+    // Initiate article model
     $article = new Models\Article;
     $post = $article->getItemById($args['id']);
     if (empty($post)) {
