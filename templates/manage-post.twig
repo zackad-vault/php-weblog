@@ -1,0 +1,30 @@
+{% extends 'base.twig' %}
+{% set title = 'Manage Post' %}
+{% block content %}
+  <div class="container markdown-body">
+    <div class="row">
+      {% for item in postlist %}
+        <div class="post post-list">
+          <div class="post-header">
+            <div class="title">
+              {% if session.login and session.role == 'admin' %}
+              <a href="/edit/article/{{ item.id }}"><i class="fa fa-pencil"></i></a> | 
+              {% endif %}
+              <a href="/post/{{ item.id }}"> {{ item.title }} </a>
+            </div>
+            <div class="meta">
+              <div class="timestamp">Posted {{ item.date_posted|date('M d, Y') }}</div>
+              <div class="pageviews"><i class="fa fa-eye"></i> {{ item.views }}x Views</div>
+              <small><em>Written by : {{ item.poster }}</em></small>
+              <div class="tags">{{ item.tags|upper }}</div>
+            </div>
+          </div>
+        </div>
+        <hr>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+{% block disqus %}
+    
+{% endblock %}
