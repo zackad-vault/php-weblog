@@ -1,0 +1,28 @@
+{% extends 'base-skeleton.twig' %}
+{% set title = post.title %}
+{% block content %}
+  <div class="container post">
+    <div class="post-header">
+      <div class="title">{{ post.title }}</div>
+      <div class="meta">
+        <div class="timestamp">
+          {% if post.date_posted != post.date_modified %}
+            Updated : {{ post.date_modified|date('F d, Y') }}
+          {% else %}
+            Posted : {{ post.date_posted|date('F d, Y') }}
+          {% endif %}
+        </div>
+        <div class="pageviews"><i class="fa fa-eye"></i> {{ post.views }}x Views</div>
+        <div class="tags">{{ post.tags|upper }}</div>
+        <em class="u-pull-right">Written by : {{ post.poster }}</em>
+      </div>
+    </div>
+    <div class="post-content">
+      <div class="markdown-body">
+        {% markdown %}
+          {{ post.post|markdown|raw }}
+        {% endmarkdown %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
