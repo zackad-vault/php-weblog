@@ -1,0 +1,18 @@
+{% extends 'base.twig' %}
+{% block content %}
+    <div class="container main-content">
+      <div class="markdown-body">
+        {% markdown %}
+        ## All avalaible categories
+        {% endmarkdown %}
+      </div>
+      <div class="row category">
+        {% for item in tags %}
+          <span class="tag"><a href="/tags/{{ item.tag_name }}/"><i class="fa fa-tags"></i> {{ item.tag_name }}</a></span>
+        {% endfor %}
+      </div>
+    </div>
+{% endblock %}
+{% block disqus %}
+    
+{% endblock %}
