@@ -1,0 +1,18 @@
+{% extends 'base.twig' %}
+{% block content %}
+    <div class="container markdown-body text-center">
+      {{ ('## ' ~ title)|markdown }}
+      {{ message|markdown }}
+      {% if flash %}
+        {% markdown %}
+          > {{ flash }}
+        {% endmarkdown %}
+      {% endif %}
+      {% for item in link %}
+        <a href="{{ item.href }}" class="button">{{ item.anchor }}</a>
+      {% endfor %}
+    </div>
+{% endblock %}
+{% block disqus %}
+    
+{% endblock %}
