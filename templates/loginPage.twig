@@ -1,0 +1,36 @@
+{% extends 'base-skeleton.twig' %}
+{% block navbar %}
+    
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="text-center">
+        <h1>Login</h1>
+      </div>
+      <div class="six columns align-center">
+        <form action="/login" method="POST">
+          <label for="username">
+            <span class="fa-stack">
+              <i class="fa fa-square-o fa-stack-2x"></i>
+              <i class="fa fa-user fa-stack-1x"></i>
+            </span> Username
+          </label>
+          <input name="user" type="text" class="u-full-width" placeholder="Username">
+          <label for="password">
+            <span class="fa-stack">
+              <i class="fa fa-square-o fa-stack-2x"></i>
+              <i class="fa fa-key fa-stack-1x"></i>
+            </span> Password
+          </label>
+          <input name="pass" type="password" class="u-full-width" placeholder="Password">
+          <a href="/" class="button">Kembali ke Beranda</a> || 
+          <input type="submit" class="button-primary" value="Login">
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block disqus %}
+    
+{% endblock %}
