@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>{% if title %}{{ title }}{% else %}Forbidden{% endif %}</title>
+  <link rel="stylesheet" href="/assets/prism/css/github-markdown.css">
+  <style>
+    .text-center {
+      text-align: center
+    }
+    blockquote {
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  {% block content %}
+    <div class="markdown-body text-center">
+      <h1>Forbidden</h1>
+      <p>Sorry, you don't have access to this page</p>
+      <p><a href="/">Back to Home</a> || <a href="/login">Login</a></p>
+    </div>
+  {% endblock %}
+</body>
+</html>
