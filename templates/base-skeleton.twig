@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block meta %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  {% endblock %}
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <title>{% if title %}{{ title }} | ZackadTech{% else %}ZackadTech{% endif %}</title>
+  {% block main_stylesheets %}
+    <link href="/css/main-style.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="/assets/skeleton/css/skeleton.css" rel="stylesheet" type="text/css">
+    <link href="/assets/prism/css/github-markdown.css" rel="stylesheet" type="text/css">
+    <link href="/assets/prism/css/prism-default.css" rel="stylesheet" type="text/css">
+    <link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <link href="/css/style-custom.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  {% endblock %}
+  {% block stylesheets %}
+      
+  {% endblock %}
+</head>
+<body>
+  {% block navbar %}
+    <nav class="navbar-mobile">
+      <ul class="navbar-list">
+        <li class="navbar-item brand">
+          <a class="navbar-link" href="/">ZackadTech</a>
+          <span class="u-pull-right">
+            <a class="navbar-link search" href="javascript:searchMenu()"><i class="fa fa-search"></i></a>
+            <a class="navbar-link hamburger" href="javascript:toggleMenu()"><i class="fa fa-bars"></i></a>
+          </span>
+        </li>
+        <li class="navbar-item"><a class="navbar-link" href="/latest/">Latest</a></li>
+        <li class="navbar-item"><a class="navbar-link" href="/popular/">Popular</a></li>
+        <li class="navbar-item"><a class="navbar-link" href="/tags/">Categories</a></li>
+        <li class="navbar-item"><a class="navbar-link" href="/random/">Random</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <nav class="navbar">
+        <div class="container">
+          <ul class="navbar-list">
+            <li class="navbar-item brand"><a class="navbar-link" href="/">ZackadTech</a></li>
+            {% if session.login and session.role == 'admin' %}
+            <li class="navbar-item">
+              <a class="navbar-link" href="#" data-popover="#codeNavPopover">Post</a>
+              <div id="codeNavPopover" class="popover">
+                <ul class="popover-list">
+                  <li class="popover-item">
+                    <a class="popover-link" href="/add/article/">Add Post</a>
+                  </li>
+                  <li class="popover-item">
+                    <a class="popover-link" href="/manage/article/">Manage Post</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            {% endif %}
+            <li class="navbar-item"><a class="navbar-link" href="/latest/">Latest</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/popular/">Popular</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/tags/">Categories</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/random/">Random</a></li>
+            {% if session.login %}
+              <li class="navbar-item active"><a class="navbar-link" href="/logout/">Logout</a></li>
+            {% elseif debug %}
+              <li class="navbar-item"><a class="navbar-link" href="/login/">Login</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+      
+    </div>
+  {% endblock %}
+  {% block content %}
+    <div class="container main-content">
+      <div class="row">
+        <div class="twelve columns markdown-body">
+          {% markdown %}
+          ## Hello World
+          ```php
+          {{ dump(session)|raw }}
+          ```
+          > Example javascript code
+          
+          ```php
+          {{ dump(base)|raw }}
+          ```
+
+          ```javascript
+          var say = 'Hello World!';
+          document.write(say);
+          for (var i = 0; i < 10 ; i++) {
+            console.log(i);
+          }
+          ```
+          {% endmarkdown %}
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+  {% block disqus %}
+    {% if not debug %}
+    <div class="container">
+      <div class="row">
+        <div id="disqus_thread"></div>
+        <script>
+          /**
+          * Disqus comment embedding
+          */
+          (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//zackad.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </div>
+    {% endif %}
+  {% endblock %}
+  {% block footer %}
+      <footer>
+        <div class="copyright">
+          <small>&copy; 2013-{{ "now"|date('Y') }} | zackad</small>
+        </div>
+      </footer>
+  {% endblock %}
+  {% block main_jslibs %}
+    <script src="/assets/prism/js/prism-lite.min.js"></script>
+    {% if debug %}
+      <script src="/js/navbar.js"></script>
+    {% else %}
+      <script src="/js/navbar.min.js"></script>
+    {% endif %}
+  {% endblock %}
+  {% block javascript %}
+      
+  {% endblock %}
+  {% block analytics %}
+    {% if not debug %}
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-90700924-1', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+    {% endif %}
+  {% endblock %}
+</body>
+</html>
