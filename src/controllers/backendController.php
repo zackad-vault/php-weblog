@@ -6,6 +6,9 @@
 
 // Article listing for management
 $app->get('/manage/article/', function ($request, $response, $args) {
+    if (!$this->auth->isLogin()) {
+        return $this->view->render($response, 'errors/403-forbidden.twig');
+    }
     $article = new Models\Article;
     $data['args'] = $args;
     $data['postlist'] = $article->getItem();
@@ -120,5 +123,5 @@ $app->get('/sitemap.xml', function ($request, $response, $args) {
     $data['urlset'] = $urlset;
 
     $response = $response->withHeader('Content-type', 'text/xml');
-    return $this->twig->render($response, 'sitemap.twig', $data);
+    return $this->view->render($response, 'sitemap.twig', $data);
 })->setName('sitemap');
