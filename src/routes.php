@@ -1,6 +1,9 @@
 <?php
 // Routes
 
+/**
+ * Homepage controller
+ */
 $app->get('/', function ($request, $response, $args) {
     // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
@@ -9,6 +12,10 @@ $app->get('/', function ($request, $response, $args) {
     return $this->view->render($response, 'index.twig', $args);
 })->setName('homepage');
 
+
+/**
+ * Post Listing Controller
+ */
 $app->get('/{type:latest|popular|random}/', function ($request, $response, $args) {
     $this->logger->info("'/post/".$args['type']."/' route");
     
@@ -39,7 +46,7 @@ $app->get('/post/[{id:[0-9]+}/[{slug}/]]', function ($request, $response, $args)
     $article = new Models\Article;
     $post = $article->getItemById($args['id']);
     if (empty($post)) {
-        return $this->view->render($response, 'errors/404-notfound.twig');
+        return $this->view->render($response, 'notice.twig', $article->notFound());
     }
     $slug = $article->slugify($post['title']);
 
