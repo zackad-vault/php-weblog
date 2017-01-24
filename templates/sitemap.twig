@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+{% if debug %}
+  <!--text>
+  {% markdown %}
+  ```php
+  {{ dump()|raw }}
+  ```
+  {% endmarkdown %}
+  </text-->
+{% endif %}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ baseurl }}/latest/</loc>
+    <lastmod>{{ 'now'|date('Y-m-d') }}</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>{{ baseurl }}/popular/</loc>
+    <lastmod>{{ 'now'|date('Y-m-d') }}</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>{{ baseurl }}/random/</loc>
+    <lastmod>{{ 'now'|date('Y-m-d') }}</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.4</priority>
+  </url>
+  {% for url in urlset %}
+    <url>
+      <loc>{{ baseurl }}{{ url.permalink }}</loc>
+      <lastmod>{{ url.date_modified|date('Y-m-d') }}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.6</priority>
+    </url>
+  {% endfor %}
+</urlset>
