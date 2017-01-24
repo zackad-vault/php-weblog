@@ -29,7 +29,7 @@ $app->get('/{type:latest|popular|random}/', function ($request, $response, $args
         $redirectPath = $this->router->pathFor('article', ['id' => $id]) . $slug . '/';
         return $response->withRedirect((string)$redirectPath, 302);
     }
-
+    $data['title'] = ($args['type'] === 'latest') ? 'Latest post' : 'Popular post';
     $data['postlist'] = $article->getItem($args['type']);
 
     foreach ($data['postlist'] as $key => $value) {
