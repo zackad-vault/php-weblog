@@ -22,7 +22,11 @@
             <div class="timestamp">Updated {{ item.date_modified|date('M d, Y') }}</div>
           {% endif %}
             <div class="pageviews"><i class="fa fa-eye"></i> {{ item.views }}x Views</div>
-            <div class="tags">{{ item.tags|upper }}</div>
+            <div class="tags">
+              {% for tag in item.tags %}
+                <a href="/tags/{{ tag.tag_name }}" class="post-tag"><i class="fa fa-tags"></i> {{ tag.tag_name|upper }}</a>
+              {% endfor %}
+            </div>
           </div>
         </div>
         <div class="post-content">

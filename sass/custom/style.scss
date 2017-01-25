@@ -32,8 +32,8 @@ pre {
   padding: 5px 10px;
   background: $color_gallery;
   border: {
-    top-left-radius: 5px;
-    bottom-right-radius: 5px;
+    top-right-radius: 5px;
+    bottom-left-radius: 5px;
   }
   a {
     text-decoration: none;
@@ -163,6 +163,16 @@ pre {
   .post-header .title a {
     font-size: 2.5rem;
     font-weight: 500;
+  }
+  .post-tag {
+    color: inherit;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 2px 5px;
+    border: .1rem solid gray;
+    font-size: .9em;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
   }
 }
 

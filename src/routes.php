@@ -20,6 +20,7 @@ $app->get('/{type:latest|popular|random}/', function ($request, $response, $args
     $this->logger->info("'/post/".$args['type']."/' route");
     
     $article = new Models\Article;
+    $tag = new Models\Tags;
     $data['type'] = $args['type'];
 
     if ($data['type'] === 'random') {
@@ -34,6 +35,7 @@ $app->get('/{type:latest|popular|random}/', function ($request, $response, $args
 
     foreach ($data['postlist'] as $key => $value) {
         $data['postlist'][$key]['slug'] = $article->slugify($value['title']);
+        $data['postlist'][$key]['tags'] = $tag->getTagsByArticleId($value['id']);
     }
 
     return $this->view->render($response, 'post-list.twig', $data);
