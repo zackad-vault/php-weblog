@@ -46,7 +46,9 @@ $app->get('/post/[{id:[0-9]+}/[{slug}/]]', function ($request, $response, $args)
 
     // Initiate article model
     $article = new Models\Article;
+    $tag = new Models\Tags;
     $post = $article->getItemById($args['id']);
+    $post['tags'] = $tag->getTagsByArticleId($post['id']);
     if (empty($post)) {
         return $this->view->render($response, 'notice.twig', $article->notFound());
     }
@@ -75,7 +77,7 @@ $app->get('/post/[{id:[0-9]+}/[{slug}/]]', function ($request, $response, $args)
 
 $app->get('/tags/[{tag_name}/]', function ($request, $response, $args) {
     $this->logger->info("'/tags' route");
-    $tags = new Models\Tags;
+    $tag = new Models\Tags;
     $article = new Models\Article;
     $data = [];
     $data['title'] = 'Categories';
@@ -85,8 +87,11 @@ $app->get('/tags/[{tag_name}/]', function ($request, $response, $args) {
         $data['title'] = ucfirst($args['tag_name']);
         $data['flash'] = 'Post with tag "' . $args['tag_name'] . '"';
         $data['postlist'] = $article->getItemByTagName($args['tag_name']);
+        foreach ($data['postlist'] as $key => $value) {
+            $data['postlist'][$key]['tags'] = $tag->getTagsByArticleId($value['id']);
+        }
         return $this->view->render($response, 'post-list.twig', $data);
     }
-    $data['tags'] = $tags->getAllTags();
+    $data['tags'] = $tag->getAllTags();
     return $this->view->render($response, 'tags-list.twig', $data);
 });

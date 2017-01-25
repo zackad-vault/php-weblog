@@ -40,7 +40,17 @@ pre {
     color: $color_log_cabin_approx;
   }
 }
-
+a.post-tag {
+  color: inherit;
+  display: inline-block;
+  text-decoration: none;
+  margin-right: 5px;
+  padding: 2px 5px;
+  border: .1rem solid gray;
+  font-size: .9em;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
 .container {
   max-width: 800px;
 }
@@ -163,16 +173,6 @@ pre {
   .post-header .title a {
     font-size: 2.5rem;
     font-weight: 500;
-  }
-  .post-tag {
-    color: inherit;
-    display: inline-block;
-    margin-right: 5px;
-    padding: 2px 5px;
-    border: .1rem solid gray;
-    font-size: .9em;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
   }
 }
 

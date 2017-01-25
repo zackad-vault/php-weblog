@@ -13,7 +13,11 @@
           {% endif %}
         </div>
         <div class="pageviews"><i class="fa fa-eye"></i> {{ post.views }}x Views</div>
-        <div class="tags">{{ post.tags|upper }}</div>
+        <div class="tags">
+          {% for tag in post.tags %}
+            <a href="/tags/{{ tag.tag_name }}" class="post-tag"><i class="fa fa-tags"></i> {{ tag.tag_name|upper }}</a>
+          {% endfor %}
+        </div>
         <em class="u-pull-right">Written by : {{ post.poster }}</em>
       </div>
     </div>
