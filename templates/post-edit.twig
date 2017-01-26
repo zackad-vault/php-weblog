@@ -20,30 +20,47 @@
         <input type="text" name="title" class="u-full-width" value="{{ post.title }}" required>
         <label for="post">Content</label>
         <textarea name="post" rows="1" class="u-full-width" required>{{ post.post }}</textarea>
+        <div class="taggle-container">
+          <div id="tags" class="input textarea clearfix"></div>
+        </div>
         <div class="row">
           <div class="six columns">
             <!-- <label for="tags">Tags</label> -->
-            <input type="text" name="tags" class="u-full-width" value="{{ post.tags }}" title="Tags" placeholder="Tags" required>
+            <input type="text" name="tags" class="u-full-width" value="{#{ post.tags }#}" title="Tags" placeholder="Tags">
           </div>
-          <div class="six columns text-right">
-            <a href="/manage/post/" class="button">Back</a>
-            <button type="submit" class="button-primary">Save</button>
-          </div>
+        </div>
+        <div class="text-center">
+          <a href="/manage/post/" class="button">Back</a>
+          <button type="submit" class="button-primary">Save</button>
         </div>
       </form>
     {% endif %}
   </div>
 </div>
-<style>textarea{  
-  /* box-sizing: padding-box; */
-  overflow:auto;
-  /* demo only: */
-  height: calc(100vh - 50px);
-  resize: none;
-}</style>
+<style>
+  textarea{
+    /* box-sizing: padding-box; */
+    overflow:auto;
+    /* demo only: */
+    height: calc(100vh - 50px);
+    resize: none;
+  }
+</style>
 {% endblock %}
 {% block javascript %}
+  <link rel="stylesheet" href="/css/taggle.min.css">
   <script src="/js/form.js"></script>
+  <script src="/js/taggle.js"></script>
+  <script>
+    var tags = {{ post.tags|json_encode()|raw }};
+    if (tags.length > 0 && typeof tags !== 'string') {
+      new Taggle('tags', {
+        tags: tags
+      });
+    } else {
+      new Taggle('tags');
+    }
+  </script>
 {% endblock %}
 {% block disqus %}
     

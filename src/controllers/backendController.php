@@ -21,10 +21,16 @@ $app->get('/edit/article/[{id}/[{flash}/]]', function ($request, $response, $arg
         return $this->view->render($response, 'errors/403-forbidden.twig');
     }
     $article = new Models\Article;
+    $tag = new Models\Tags;
     if (!isset($args['id'])) {
         return $response->withRedirect($this->router->pathFor('manage-article'), 302);
     }
     $data['post'] = $article->getItemById($args['id']);
+    $tags = $tag->getTagsByArticleId($args['id']);
+    foreach ($tags as $key => $value) {
+        $tagList[] = $value['tag_name'];
+    }
+    $data['post']['tags'] = $tagList;
     if (empty($data['post'])) {
         $data = $article->notFound();
         return $this->view->render($response, 'notice.twig', $data);
@@ -61,6 +67,7 @@ $app->post('/{type:add|edit}/article/[{id}/]', function ($request, $response, $a
         return $this->view->render($response, 'errors/403-forbidden.twig');
     }
     $article = new Models\Article;
+    $tag = new Models\Tags;
     $post = $request->getParsedBody();
     if ($args['type'] === 'add') {
         $post['poster'] = $_SESSION['username'];
@@ -72,6 +79,11 @@ $app->post('/{type:add|edit}/article/[{id}/]', function ($request, $response, $a
         $post['id'] = $args['id'];
         $article->updateItem($post);
         $data['post'] = $article->getItemById($args['id']);
+        $tags = $tag->getTagsByArticleId($args['id']);
+        foreach ($tags as $key => $value) {
+            $tagList[] = $value['tag_name'];
+        }
+        $data['post']['tags'] = $tagList;
         $data['title'] = 'Editing "' . $data['post']['title'] . '"';
         $data['flash'] = 'Saved Successfully';
         $data['body'] = $post;

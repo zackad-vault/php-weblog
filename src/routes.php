@@ -95,3 +95,11 @@ $app->get('/tags/[{tag_name}/]', function ($request, $response, $args) {
     $data['tags'] = $tag->getAllTags();
     return $this->view->render($response, 'tags-list.twig', $data);
 });
+
+$app->get('/test/', function ($request, $response, $args) {
+    return $this->view->render($response, 'test-form.twig');
+});
+$app->post('/test/', function ($request, $response, $args) {
+    $data['post'] = $request->getParsedBody();
+    return $this->view->render($response, 'test-form.twig', $data);
+});
