@@ -46,7 +46,7 @@ class Article extends Database
 
     public function createTable()
     {
-        $create = "CREATE TABLE IF NOT EXISTS articles (id integer primary key, title text, post text, poster text, date_posted text, date_modified text, tags text, views integer default 0)";
+        $create = "CREATE TABLE IF NOT EXISTS articles (id integer primary key, title text not null, post text not null, poster text not null, date_posted text default current_timestamp, date_modified text current_timestamp, tags text, views integer default 0)";
         return $this->db->query($create);
     }
 
