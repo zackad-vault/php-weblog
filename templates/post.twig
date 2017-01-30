@@ -3,7 +3,12 @@
 {% block content %}
   <div class="container post">
     <div class="post-header">
-      <div class="title">{{ post.title }}</div>
+      <div class="title">
+        {% if session.login and session.role == 'admin' %}
+          <small><a href="/edit/article/{{ post.id }}/"><i class="fa fa-pencil fa-small"></i></a></small> | 
+        {% endif %}
+        {{ post.title }}
+      </div>
       <div class="meta">
         <div class="timestamp">
           {% if post.date_posted != post.date_modified %}
