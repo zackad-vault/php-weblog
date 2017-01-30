@@ -26,15 +26,15 @@ $app->get('/edit/article/[{id}/[{flash}/]]', function ($request, $response, $arg
         return $response->withRedirect($this->router->pathFor('manage-article'), 302);
     }
     $data['post'] = $article->getItemById($args['id']);
+    if (empty($data['post'])) {
+        $data = $article->notFound();
+        return $this->view->render($response, 'notice.twig', $data);
+    }
     $tags = $tag->getTagsByArticleId($args['id']);
     foreach ($tags as $key => $value) {
         $tagList[] = $value['tag_name'];
     }
     $data['post']['tags'] = $tagList;
-    if (empty($data['post'])) {
-        $data = $article->notFound();
-        return $this->view->render($response, 'notice.twig', $data);
-    }
     $data['title'] = 'Editing "' . $data['post']['title'] . '"';
     return $this->view->render($response, 'post-edit.twig', $data);
 })->setName('edit-article');

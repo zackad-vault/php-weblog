@@ -48,10 +48,10 @@ $app->get('/post/[{id:[0-9]+}/[{slug}/]]', function ($request, $response, $args)
     $article = new Models\Article;
     $tag = new Models\Tags;
     $post = $article->getItemById($args['id']);
-    $post['tags'] = $tag->getTagsByArticleId($post['id']);
     if (empty($post)) {
         return $this->view->render($response, 'notice.twig', $article->notFound());
     }
+    $post['tags'] = $tag->getTagsByArticleId($post['id']);
     $slug = $article->slugify($post['title']);
 
     // Redirect article post if slug is wrong or not exists
