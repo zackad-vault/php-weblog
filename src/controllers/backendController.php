@@ -112,7 +112,7 @@ $app->post('/login/', function ($request, $response, $args) {
             'username' => $user,
             'password' => $pass,
         ];
-        return $this->view->render('loginPage.twig', $data);
+        return $this->view->render($response, 'loginPage.twig', $data);
     }
 });
 
