@@ -53,7 +53,7 @@
   <script src="/js/taggle.js"></script>
   <script>
     var tags = {{ post.tags|json_encode()|raw }};
-    if (tags.length > 0 || typeof tags !== 'string' || tags !== null) {
+    if (tags !== null && tags.constructor === Array && tags.length > 0) {
       new Taggle('tags', {
         tags: tags
       });
