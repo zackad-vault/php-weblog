@@ -137,3 +137,14 @@ $app->get('/sitemap.xml', function ($request, $response, $args) {
     $response = $response->withHeader('Content-type', 'text/xml');
     return $this->view->render($response, 'sitemap.twig', $data);
 })->setName('sitemap');
+
+
+/**
+ * Tags Management
+ */
+$app->post('/add/tags/', function ($request, $response, $args) {
+    $body = $request->getParsedBody();
+    $tag = new Models\Tags;
+    $tag->addTagToArticle($body['articleId'], $body['tagName']);
+    return $response->withJson($body, null, JSON_NUMERIC_CHECK);
+});
