@@ -49,7 +49,6 @@
 {% endblock %}
 {% block javascript %}
   <link rel="stylesheet" href="/css/taggle.min.css">
-  <script src="/js/form.js"></script>
   <script src="/js/taggle.js"></script>
   <script>
     var tags = {{ post.tags|json_encode()|raw }};
@@ -61,6 +60,7 @@
       new Taggle('tags');
     }
   </script>
+  <script src="/js/form.js"></script>
 {% endblock %}
 {% block disqus %}
     
