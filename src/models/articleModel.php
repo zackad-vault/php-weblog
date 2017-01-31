@@ -94,10 +94,6 @@ class Article extends Database
             ':id' => $id,
         ]);
         $res = $prepare->fetch();
-        // if (empty($res)) {
-        //     $res['title'] = 'Article Not Found';
-        //     $res['message'] = 'Sorry, the article that you looking for is not found!';
-        // }
         return $res;
     }
 
