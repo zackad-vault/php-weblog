@@ -143,6 +143,9 @@ $app->get('/sitemap.xml', function ($request, $response, $args) {
  * Tags Management
  */
 $app->post('/add/tags/', function ($request, $response, $args) {
+    if (!$this->auth->isLogin()) {
+        return $this->view->render($response, 'errors/403-forbidden.twig');
+    }
     $body = $request->getParsedBody();
     $tag = new Models\Tags;
     $tag->addTagToArticle($body['articleId'], $body['tagName']);
