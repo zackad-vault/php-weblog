@@ -142,6 +142,7 @@ $app->get('/sitemap.xml', function ($request, $response, $args) {
 /**
  * Tags Management
  */
+// Add tags to article
 $app->post('/add/tags/', function ($request, $response, $args) {
     if (!$this->auth->isLogin()) {
         return $this->view->render($response, 'errors/403-forbidden.twig');
@@ -149,5 +150,16 @@ $app->post('/add/tags/', function ($request, $response, $args) {
     $body = $request->getParsedBody();
     $tag = new Models\Tags;
     $tag->addTagToArticle($body['articleId'], $body['tagName']);
+    return $response->withJson($body, null, JSON_NUMERIC_CHECK);
+});
+
+// Delete tags from article
+$app->post('/delete/tags/', function ($request, $response, $args) {
+    if (!$this->auth->isLogin()) {
+        return $this->view->render($response, 'errors/403-forbidden.twig');
+    }
+    $body = $request->getParsedBody();
+    $tag = new Models\Tags;
+    $tag->deleteTagFromArticle($body['articleId'], $body['tagName']);
     return $response->withJson($body, null, JSON_NUMERIC_CHECK);
 });
