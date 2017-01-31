@@ -35,13 +35,21 @@ class Article extends Database
     public function addItem($data)
     {
         $insert = "INSERT OR IGNORE INTO articles (title, post, poster, date_posted, date_modified, tags, views) VALUES (:title, :post, :poster, datetime(), datetime(), :tags, 0)";
+        $tagModel = new Tags;
+        foreach ($data['taggles'] as $tag) {
+            $tagModel->addItem($tag);
+        }
         $prepare = $this->db->prepare($insert);
-        return $prepare->execute([
+        $prepare->execute([
             ':title' => $data['title'],
             ':post' => $data['post'],
             ':tags' => $data['tags'],
             ':poster' => $data['poster'],
         ]);
+        $lastId = $this->getLastArticleId();
+        foreach ($data['taggles'] as $tag) {
+            $tagModel->addTagToArticle($lastId['id'], $tag);
+        }
     }
 
     public function createTable()
@@ -101,6 +109,13 @@ class Article extends Database
             ':tag_name' => $tag_name,
         ]);
         return $prepare->fetchAll();
+    }
+
+    public function getLastArticleId()
+    {
+        $lastId = "SELECT id FROM articles ORDER BY id DESC LIMIT 1";
+        $id = $this->db->query($lastId);
+        return $id->fetch();
     }
 
     private function getLatestItems()

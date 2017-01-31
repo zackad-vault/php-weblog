@@ -47,7 +47,7 @@ $app->get('/add/article/[{status}/]', function ($request, $response, $args) {
         $data['flash'] = 'Saved Successfully';
         $data['link'] = [
             [
-                'link' => '/add/article/',
+                'href' => '/add/article/',
                 'anchor' => 'Add Other Article',
             ],
             [
