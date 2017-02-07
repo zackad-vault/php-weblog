@@ -193,6 +193,41 @@ a.post-tag {
   }
 }
 
+.cookie {
+  display: block;
+  position: fixed;
+  bottom: 0px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: .8em;
+  background: $color_gallery;
+  p {
+    display: none;
+    margin-bottom: 5px;
+    padding: 2px;
+    background: $white;
+    border-radius: 5px;
+    &.mobile {
+      display: block;
+    }
+  }
+  a {
+    color: $color_log_cabin_approx;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid $color_log_cabin_approx;
+    padding: 1px 5px;
+  }
+  a.close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border-radius: 2px;
+    background: $white;
+  }
+}
+
 footer {
   .copyright {
     background: $color_log_cabin_approx;
@@ -218,6 +253,17 @@ footer {
   }
   .docs-section {
     padding: 6rem 0;
+  }
+  .cookie {
+    max-width: 200px;
+    left: 3%;
+    bottom: 10px;
+    p {
+      display: block;
+    }
+    p.mobile {
+      display: none;
+    }
   }
 }
 

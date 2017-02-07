@@ -12,6 +12,16 @@ $app->get('/', function ($request, $response, $args) {
     return $this->view->render($response, 'index.twig', $args);
 })->setName('homepage');
 
+/**
+ * Cookie Policy
+ */
+$app->get('/cookie-policy/', function ($request, $response, $args) {
+    // Sample log message
+    $this->logger->info("Slim-Skeleton '/' route");
+
+    // Render index view
+    return $this->view->render($response, 'cookie-policy.twig', $args);
+})->setName('cookie-policy');
 
 /**
  * Post Listing Controller

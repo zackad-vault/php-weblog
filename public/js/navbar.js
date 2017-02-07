@@ -14,6 +14,13 @@ for (var i = 0; i < popover.length; i++) {
     });
 }
 document.addEventListener('click', closePopover);
+checkCookiePopup();
+
+function checkCookiePopup() {
+    if (localStorage.cookie_popup === 'false') {
+        closeCookie();
+    }
+}
 
 function closePopover(el) {
     var popover = document.querySelectorAll('.popover.open');
@@ -23,6 +30,12 @@ function closePopover(el) {
         }
     }
 }
+
+function closeCookie() {
+    document.querySelector('.cookie').style.display = 'none';
+    localStorage.setItem('cookie_popup', 'false');
+}
+
 function onScroll() {
     if (navOffsetTop < $window.scrollTop() && !$body.hasClass('has-docked-nav')) {
         $body.addClass('has-docked-nav')
