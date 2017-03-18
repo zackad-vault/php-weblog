@@ -1,3 +1,226 @@
 // Style for Mobile/small screen device
 // ______________________________________________
+.align-center {
+  float: none;
+  margin: 0 auto;
+}
 
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.category .tag {
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  background: $color_gallery;
+  border: {
+    top-right-radius: 5px;
+    bottom-left-radius: 5px;
+  }
+  a {
+    text-decoration: none;
+    color: $color_log_cabin_approx;
+  }
+}
+
+a.post-tag {
+  color: inherit;
+  display: inline-block;
+  text-decoration: none;
+  margin-right: 5px;
+  padding: 2px 5px;
+  border: .1rem solid gray;
+  font-size: .9em;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.main-content,
+.markdown-body {
+  margin: 15px auto;
+}
+
+.header {
+  margin-top: 6rem;
+  text-align: center;
+}
+
+.value-prop {
+  margin-top: 1rem;
+}
+
+.value-props {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.heading-font-size {
+  font-size: 1.2rem;
+  color: $color_mountain_mist_approx;
+  letter-spacing: normal;
+}
+
+.navbar {
+  display: none;
+}
+
+.navbar-mobile {
+  display: block;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: $white;
+  z-index: 99;
+  border-bottom: .2rem solid $color_log_cabin_approx;
+  .navbar-list {
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .navbar-item {
+    display: none;
+    position: relative;
+    margin-bottom: 0;
+    &.active {
+      display: block;
+    }
+    &.brand {
+      letter-spacing: .2rem;
+    }
+  }
+  .navbar-link {
+    display: block;
+    font-weight: 600;
+    margin-left: 0px;
+    padding-left: 15px;
+    text-decoration: none;
+    line-height: 3rem;
+    color: $color_log_cabin_approx;
+    width: 100%;
+    &.active {
+      background: $color_gallery_approx;
+      color: $color_picton_blue_approx;
+    }
+    &:hover {
+      background: $color_gallery;
+    }
+  }
+  .brand {
+    @extend .navbar-item;
+    display: block;
+    border-bottom: .1rem solid $color_mountain_mist_approx;
+    span {
+      margin-right: 10px;
+    }
+    .navbar-link {
+      display: inline;
+      width: auto;
+      margin-left: 15px;
+      padding-left: 0px;
+      &.hamburger,
+      &.search {
+        padding: {
+          left: 10px;
+          right: 10px;
+          top: .4rem;
+          bottom: .4rem;
+        }
+        margin: {
+          right: 0px;
+          left: 0px;
+        }
+      }
+    }
+  }
+  .popover-list {
+    @extend .navbar-list;
+    margin-left: 0px;
+  }
+  .popover-item {
+    @extend .navbar-item;
+    display: block;
+  }
+  .popover-link {
+    @extend .navbar-link;
+    font-weight: 500;
+    padding-left: 30px;
+  }
+}
+
+.navbar-mobile + .container {
+  margin-top: 40px;
+}
+
+.post-list {
+  .post-header .title a {
+    font-size: 2.5rem;
+    font-weight: 500;
+  }
+}
+
+.post {
+  .post-header {
+    .title {
+      font-size: 3rem;
+      font-weight: 600;
+      font-weight: 1;
+    }
+    .meta {
+      > * {
+        display: inline;
+        font-size: .8em;
+        color: $color_mountain_mist_approx;
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+.cookie {
+  display: block;
+  position: fixed;
+  bottom: 0px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: .8em;
+  background: $color_gallery;
+  p {
+    display: none;
+    margin-bottom: 5px;
+    padding: 2px;
+    background: $white;
+    border-radius: 5px;
+    &.mobile {
+      display: block;
+    }
+  }
+  a {
+    color: $color_log_cabin_approx;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid $color_log_cabin_approx;
+    padding: 1px 5px;
+  }
+  a.close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border-radius: 2px;
+    background: $white;
+  }
+}
+
+footer {
+  .copyright {
+    background: $color_log_cabin_approx;
+    color: $color_gallery_approx;
+    text-align: center;
+    padding: .5rem;
+  }
+}

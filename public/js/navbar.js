@@ -16,6 +16,9 @@ for (var i = 0; i < popover.length; i++) {
 document.addEventListener('click', closePopover);
 checkCookiePopup();
 
+// Set Active Navbar
+setActiveNavbar();
+
 function checkCookiePopup() {
     if (localStorage.cookie_popup === 'false') {
         closeCookie();
@@ -51,6 +54,12 @@ function openPopover(el) {
     } else {
         el.nextElementSibling.classList.add('open');
     }
+}
+
+function setActiveNavbar() {
+    var currentPage = window.location.pathname;
+    var selectedNavbar = document.querySelector('.navbar .navbar-item a[href="' + currentPage + '"]');
+    selectedNavbar.parentNode.classList.add('active');
 }
 
 function toggleMenu() {
