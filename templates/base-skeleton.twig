@@ -103,19 +103,7 @@
     {% if not debug %}
     <div class="container">
       <div class="row">
-        <div id="disqus_thread"></div>
-        <script>
-          /**
-          * Disqus comment embedding
-          */
-          (function() { // DON'T EDIT BELOW THIS LINE
-          var d = document, s = d.createElement('script');
-          s.src = '//zackadtech.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <div class="disqus"></div>
       </div>
     </div>
     {% endif %}
@@ -137,6 +125,12 @@
   {% endblock %}
   {% block main_jslibs %}
     <script src="/assets/prism/js/prism-lite.min.js"></script>
+    <script src="/assets/disqus-loader/disqusloader.js"></script>
+    <script>
+      disqusLoader('.disqus', {
+        scriptUrl: '//zackadtech.disqus.com/embed.js'
+      });
+    </script>
     {% if debug %}
       <script src="/js/navbar.js"></script>
     {% else %}
