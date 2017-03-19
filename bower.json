@@ -1,0 +1,25 @@
+{
+  "name": "zackad-blog",
+  "authors": [
+    "zackad <zackad.dev@gmail.com>"
+  ],
+  "description": "ZackadTech codebase",
+  "main": "",
+  "keywords": [
+    "blog",
+    "minimalis",
+    "optimized"
+  ],
+  "license": "MIT",
+  "homepage": "https://www.zackadtech.tk",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "disqus-loader": "osvaldasvalutis/disqusLoader.js"
+  }
+}
