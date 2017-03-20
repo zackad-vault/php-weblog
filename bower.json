@@ -20,6 +20,10 @@
     "tests"
   ],
   "dependencies": {
-    "disqus-loader": "osvaldasvalutis/disqusLoader.js"
+    "disqus-loader": "osvaldasvalutis/disqusLoader.js",
+    "tagglejs": "okcoker/taggle.js#^1.11.2",
+    "github-markdown-css": "sindresorhus/github-markdown-css#^2.4.1",
+    "font-awesome": "^4.7.0",
+    "skeleton": "^2.0.4"
   }
 }

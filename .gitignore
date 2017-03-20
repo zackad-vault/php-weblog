@@ -1,10 +1,27 @@
+# Composer package
 /vendor/
+
+# Bower components
+public/assets/
+!public/assets/prims
+
+
+# Logs
 /logs/*
 !/logs/README.md
 
+# sass cache
 .sass-cache
 
+# htaccess for different environment
 public/.htaccess-*
 
+
+# Real setting file
 src/settings.php
+
+# Setting for different enviroment
 src/settings-*
+
+# Sqlite Database
+*.db
