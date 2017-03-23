@@ -5,9 +5,6 @@
  * Homepage controller
  */
 $app->get('/', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
-
     // Render index view
     return $this->view->render($response, 'index.twig', $args);
 })->setName('homepage');
@@ -16,9 +13,6 @@ $app->get('/', function ($request, $response, $args) {
  * Cookie Policy
  */
 $app->get('/cookie-policy/', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
-
     // Render index view
     return $this->view->render($response, 'cookie-policy.twig', $args);
 })->setName('cookie-policy');
@@ -27,8 +21,6 @@ $app->get('/cookie-policy/', function ($request, $response, $args) {
  * Post Listing Controller
  */
 $app->get('/{type:latest|popular|random}/', function ($request, $response, $args) {
-    $this->logger->info("'/post/".$args['type']."/' route");
-    
     $article = new Models\Article;
     $tag = new Models\Tags;
     $data['type'] = $args['type'];
@@ -52,8 +44,6 @@ $app->get('/{type:latest|popular|random}/', function ($request, $response, $args
 });
 
 $app->get('/post/[{id:[0-9]+}/[{slug}/]]', function ($request, $response, $args) {
-    $this->logger->info("'/post' route");
-
     // Initiate article model
     $article = new Models\Article;
     $tag = new Models\Tags;
@@ -86,7 +76,6 @@ $app->get('/post/[{id:[0-9]+}/[{slug}/]]', function ($request, $response, $args)
 })->setName('article');
 
 $app->get('/tags/[{tag_name}/]', function ($request, $response, $args) {
-    $this->logger->info("'/tags' route");
     $tag = new Models\Tags;
     $article = new Models\Article;
     $data = [];
