@@ -170,6 +170,8 @@ class Article extends Database
         $text = trim($text);
         // remove duplicate -
         $text = preg_replace('~-+~', '-', $text);
+        // remove trailing -
+        $text = preg_replace('~-+$~', '', $text);
         // lowercase
         $text = strtolower($text);
         if (empty($text)) {
