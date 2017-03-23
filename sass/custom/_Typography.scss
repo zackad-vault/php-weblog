@@ -1,0 +1,22 @@
+/**
+ * Typography styling and helper
+ */
+.enlarge {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.reduce {
+  font-size: .8em;
+}
+
+.reset {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+@media(min-width: 550px) {
+  .enlarge {
+    font-size: 1.3em;
+  }
+}
