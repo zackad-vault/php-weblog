@@ -1,6 +1,14 @@
 @media(min-width: 550px) {
+  body > .container {
+    margin-top: 75px;
+  }
   .container {
     width: 90%;
+  }
+  .fixed-top {
+    position: fixed;
+    top: 0;
+    left: 0;
   }
   .header {
     margin-top: 18rem;
