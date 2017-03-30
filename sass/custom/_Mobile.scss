@@ -17,14 +17,19 @@
   display: inline-block;
   font-size: 1.5rem;
   padding: 5px 10px;
+  margin: 5px 2px;
   background: $color_gallery;
   border: {
     top-right-radius: 5px;
     bottom-left-radius: 5px;
   }
+  &:hover {
+    background: #333;
+    color: #fff;
+  }
   a {
     text-decoration: none;
-    color: $color_log_cabin_approx;
+    color: inherit;
   }
 }
 
