@@ -88,6 +88,7 @@ $app->get('/tags/[{tag_name}/]', function ($request, $response, $args) {
         $data['postlist'] = $article->getItemByTagName($args['tag_name']);
         foreach ($data['postlist'] as $key => $value) {
             $data['postlist'][$key]['tags'] = $tag->getTagsByArticleId($value['id']);
+            $data['postlist'][$key]['slug'] = $article->slugify($value['title']);
         }
         return $this->view->render($response, 'post-list.twig', $data);
     }
