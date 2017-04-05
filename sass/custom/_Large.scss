@@ -5,6 +5,13 @@
   .container {
     width: 90%;
   }
+  .navbar-link.brand {
+    color: #33f;
+    font-size: 120%;
+    &:hover {
+      color: #4078c0;
+    }
+  }
   .fixed-top {
     position: fixed;
     top: 0;
