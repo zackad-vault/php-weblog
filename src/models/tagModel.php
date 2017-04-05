@@ -68,7 +68,7 @@ class Tags extends Database
 
     public function getAllTags()
     {
-        $select = "SELECT count(at.id) jumlah, at.tag_id id, t.tag_name FROM article_tags AS at LEFT JOIN tags AS t ON t.id = at.tag_id GROUP BY tag_id ORDER BY jumlah, tag_name";
+        $select = "SELECT count(at.id) jumlah, at.tag_id id, t.tag_name FROM article_tags AS at LEFT JOIN tags AS t ON t.id = at.tag_id GROUP BY tag_id ORDER BY tag_name";
         $prepare = $this->db->prepare($select);
         $prepare->execute();
         return $prepare->fetchAll();
