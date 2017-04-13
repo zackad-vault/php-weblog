@@ -5,8 +5,11 @@
 public/assets/
 !public/assets/prims
 
+# Documentation
+docs
 
 # Logs
+logs
 /logs/*
 !/logs/README.md
 
@@ -25,3 +28,12 @@ src/settings-*
 
 # Sqlite Database
 *.db
+
+# Misc
+.fuse_*
+api
+assets
+public/css
+public/fonts
+public/images
+public/js/*.min.js
