@@ -1,5 +1,8 @@
 {% extends 'base-skeleton.twig' %}
 {% set title = post.title %}
+{% block meta %}
+  {% include 'partial/meta.twig' %}
+{% endblock %}
 {% block content %}
   <div class="container post">
     <div class="post-header">
