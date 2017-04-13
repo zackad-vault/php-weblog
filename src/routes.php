@@ -64,6 +64,16 @@ $app->get('/post/[{id:[0-9]+}/[{slug}/]]', function ($request, $response, $args)
 
     // Update article view counter
     $article->updateViewCount($post['id']);
+    $uri = $request->getUri();
+    $url = $uri->getScheme() . '://' . $uri->getHost() . $uri->getPath();
+    $thumbnail = $uri->getScheme() . '://' . $uri->getHost() . '/images/logo.png';
+    $meta = [
+        'title' => $post['title'],
+        'type' => 'Article',
+        'description' => substr($post['post'], 0, 100),
+        'image' => $thumbnail,
+        'url' => $url,
+    ];
 
     // Data to be passed to view renderer
     $data = [
@@ -71,6 +81,7 @@ $app->get('/post/[{id:[0-9]+}/[{slug}/]]', function ($request, $response, $args)
         'post' => $post,
         'id' => $args['id'],
         'args' => $args,
+        'meta' => $meta,
     ];
     return $this->view->render($response, 'post.twig', $data);
 })->setName('article');
