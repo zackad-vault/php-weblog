@@ -106,3 +106,26 @@ $app->get('/tags/[{tag_name}/]', function ($request, $response, $args) {
     $data['tags'] = $tag->getAllTags();
     return $this->view->render($response, 'tags-list.twig', $data);
 });
+
+$app->get('/thumbnails/[{filename}]', function ($request, $response, $args) {
+    // Get Post ID and check if article is exists
+    $postId = preg_filter('~[\D]~', '', $args['filename']);
+    $name = explode('-', $args['filename']);
+    $article = new Models\Article;
+    if (empty($article->getItemById($postId)) or $name[0] !== 'post') {
+        dump($article->getItemById($postId));
+        $logo = file_get_contents(dirname(__DIR__) . '/public/images/logo.png');
+        return $response->withHeader('Content-Type', 'image/png')->write($logo);
+    }
+
+    // Get uri and pathname
+    $uri = $request->getUri();
+    $baseUri = $uri->getScheme() . '://' . $uri->getHost();
+    $url = $baseUri . '/post/' . $postId;
+
+    // Thumbnail Generation Proccess
+    $thumbnail = new Models\Thumbnail($url, $args['filename']);
+    $result = $thumbnail->render();
+    $result = file_get_contents($result);
+    return $response->withHeader('Content-Type', 'image/png')->write($result);
+});

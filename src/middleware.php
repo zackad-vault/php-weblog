@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 $app->add(function (Request $request, Response $response, callable $next) {
     $uri = $request->getUri();
     $path = $uri->getPath();
-    if ($path != '/' && substr($path, -1) !== '/' && substr($path, -4, 4) !== '.xml') {
+    if ($path != '/' && substr($path, -1) !== '/' && substr($path, -4, 4) !== '.xml' && substr($path, -4, 4) !== '.png') {
         // permanently redirect paths without a trailing slash
         // to their trailing counterpart
         $uri = $uri->withPath($path . '/');
