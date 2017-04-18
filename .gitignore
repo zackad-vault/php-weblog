@@ -36,4 +36,5 @@ assets
 public/css
 public/fonts
 public/images
+public/thumbnails
 public/js/*.min.js
