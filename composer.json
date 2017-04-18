@@ -22,9 +22,11 @@
         "slim/twig-view": "^2.1"
     },
 	"scripts": {
-        "start": "php -S 0.0.0.0:8080 -t public public/index.php"
+        "start": "php -S 0.0.0.0:8080 -t public public/index.php",
+        "test": "./vendor/bin/phpunit"
 	},
     "require-dev": {
-        "symfony/var-dumper": "^3.2"
+        "symfony/var-dumper": "^3.2",
+        "phpunit/phpunit": "^6.1"
     }
 }
