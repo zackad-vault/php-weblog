@@ -76,7 +76,7 @@ $app->get('/post/[{id:[0-9]+}/[{slug}/]]', function ($request, $response, $args)
     $meta = [
         'title' => $post['title'],
         'type' => 'Article',
-        'description' => substr($post['post'], 0, 100),
+        'description' => $post['post'],
         'image' => $thumbnail,
         'url' => $url,
     ];
