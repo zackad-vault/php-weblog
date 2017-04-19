@@ -72,7 +72,7 @@ $app->get('/post/[{id:[0-9]+}/[{slug}/]]', function ($request, $response, $args)
     $article->updateViewCount($post['id']);
     $uri = $request->getUri();
     $url = $uri->getScheme() . '://' . $uri->getHost() . $uri->getPath();
-    $thumbnail = $uri->getScheme() . '://' . $uri->getHost() . '/images/logo.png';
+    $thumbnail = $uri->getScheme() . '://' . $uri->getHost() . '/thumbnails/post-' . $args['id'] . '.png';
     $meta = [
         'title' => $post['title'],
         'type' => 'Article',
