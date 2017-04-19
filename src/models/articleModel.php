@@ -75,7 +75,13 @@ class Article extends Database
             }
             $prepare = $this->db->prepare($select);
             $prepare->execute();
-            return $prepare->fetchAll();
+            $results = $prepare->fetchAll();
+            $tag = new Tags;
+            foreach ($results as $key => $item) {
+                $results[$key]['slug'] = $this->slugify($item['title']);
+                $results[$key]['tags'] = $tag->getTagsByArticleId($item['id']);
+            }
+            return $results;
         } catch (Exception $e) {
             if (strpos($e->getMessage(), 'no such table') !== false) {
                 $this->createTable();
