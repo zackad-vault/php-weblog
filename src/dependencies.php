@@ -29,3 +29,11 @@ $container['view'] = function ($c) {
 
     return $view;
 };
+
+// Override the default Not Found Handler
+$container['notFoundHandler'] = function ($c) {
+    return function ($request, $response) use ($c) {
+        $c['view']->render($response, 'errors/404-notfound.twig', []);
+        return $c['response']->withStatus(404);
+    };
+};
