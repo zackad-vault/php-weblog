@@ -1,0 +1,57 @@
+{#}
+Template for rendering post/article list
+Expected data structure:
+
+postlist: (array)
+  - id (integer)
+  - title (string)
+  - post (text)
+  - poster (string)
+  - date_posted (datetime)
+  - date_modified (datetime)
+  - tags: (array)
+    - (string)
+  - views (integer)
+  - slug (string)
+
+{#}
+{% for item in postlist %}
+  <div class="post post-list">
+    <div class="post-header">
+      <div class="title">
+        {% if session.login and session.role == 'admin' %}
+        <a href="/edit/article/{{ item.id }}"><i class="fa fa-pencil"></i></a> | 
+        {% endif %}
+        <a href="/post/{{ item.id }}"> {{ item.title }} </a>
+      </div>
+      <div class="meta">
+      {% if item.date_posted == item.date_modified %}
+        <div class="timestamp">Posted {{ item.date_posted|date('M d, Y') }}</div>
+      {% else %}
+        <div class="timestamp">Updated {{ item.date_modified|date('M d, Y') }}</div>
+      {% endif %}
+        <div class="pageviews"><i class="fa fa-eye"></i> {{ item.views }}x Views</div>
+        <div class="tags">
+          {% for tag in item.tags %}
+            <a href="/tags/{{ tag.tag_name }}" class="post-tag"><i class="fa fa-tags"></i> {{ tag.tag_name|upper }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="post-content">
+      <div>
+        {% if item.post|markdown|striptags|raw|length > 400 %}
+          <blockquote>
+            {{ item.post|markdown|striptags|raw|slice(0,400) }} ... <a href="/post/{{ item.id }}/{{ item.slug }}/">Continue Reading</a>
+          </blockquote>
+        {% else %}
+          <blockquote>
+            {{ item.post|markdown|striptags|raw }}
+          </blockquote>
+        {% endif %}
+      </div>
+    </div>
+    <small><em>Written by : {{ item.poster }}</em></small>
+  </div>
+  <hr>
+{% endfor %}

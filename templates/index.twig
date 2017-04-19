@@ -19,6 +19,9 @@
         <a href="https://gitlab.com/zackad" target="_blank">zackad</a>
       </div>
     </div>
+    <hr>
+    {% set postlist = articles %}
+    {% include 'partial/components/post-list.twig' %}
   </div>
 {% endblock %}
 {% block disqus %}

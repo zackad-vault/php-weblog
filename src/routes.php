@@ -6,7 +6,14 @@
  */
 $app->get('/', function ($request, $response, $args) {
     // Render index view
-    return $this->view->render($response, 'index.twig', $args);
+    // Show Random Article/Post
+    $article = new Models\Article;
+    $articles = $article->getItem('random');
+    dump($articles);
+    return $this->view->render($response, 'index.twig', [
+        'args' => $args,
+        'articles' => $articles,
+    ]);
 })->setName('homepage');
 
 /**
