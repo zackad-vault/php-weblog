@@ -59,6 +59,9 @@ function openPopover(el) {
 function setActiveNavbar() {
     var currentPage = window.location.pathname;
     var selectedNavbar = document.querySelector('.navbar .navbar-item a[href="' + currentPage + '"]');
+    if (!selectedNavbar) {
+        return;
+    }
     selectedNavbar.parentNode.classList.add('active');
 }
 
