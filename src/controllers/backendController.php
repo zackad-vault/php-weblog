@@ -7,7 +7,8 @@
 // Article listing for management
 $app->get('/manage/article/', function ($request, $response, $args) {
     if (!$this->auth->isLogin()) {
-        return $this->view->render($response, 'errors/403-forbidden.twig');
+        $this->view->render($response, 'errors/403-forbidden.twig');
+        return $response->withStatus(403);
     }
     $article = new Models\Article;
     $data['args'] = $args;
@@ -18,7 +19,8 @@ $app->get('/manage/article/', function ($request, $response, $args) {
 // Article editing
 $app->get('/edit/article/[{id}/[{flash}/]]', function ($request, $response, $args) {
     if (!$this->auth->isLogin()) {
-        return $this->view->render($response, 'errors/403-forbidden.twig');
+        $this->view->render($response, 'errors/403-forbidden.twig');
+        return $response->withStatus(403);
     }
     $article = new Models\Article;
     $tag = new Models\Tags;
@@ -41,7 +43,8 @@ $app->get('/edit/article/[{id}/[{flash}/]]', function ($request, $response, $arg
 
 $app->get('/add/article/[{status}/]', function ($request, $response, $args) {
     if (!$this->auth->isLogin()) {
-        return $this->view->render($response, 'errors/403-forbidden.twig');
+        $this->view->render($response, 'errors/403-forbidden.twig');
+        return $response->withStatus(403);
     }
     if (isset($args['status']) and $args['status'] === 'done') {
         $data['flash'] = 'Saved Successfully';
@@ -64,7 +67,8 @@ $app->get('/add/article/[{status}/]', function ($request, $response, $args) {
 // Article processing
 $app->post('/{type:add|edit}/article/[{id}/]', function ($request, $response, $args) {
     if (!$this->auth->isLogin()) {
-        return $this->view->render($response, 'errors/403-forbidden.twig');
+        $this->view->render($response, 'errors/403-forbidden.twig');
+        return $response->withStatus(403);
     }
     $article = new Models\Article;
     $tag = new Models\Tags;
@@ -145,7 +149,8 @@ $app->get('/sitemap.xml', function ($request, $response, $args) {
 // Add tags to article
 $app->post('/add/tags/', function ($request, $response, $args) {
     if (!$this->auth->isLogin()) {
-        return $this->view->render($response, 'errors/403-forbidden.twig');
+        $this->view->render($response, 'errors/403-forbidden.twig');
+        return $response->withStatus(403);
     }
     $body = $request->getParsedBody();
     $tag = new Models\Tags;
@@ -156,7 +161,8 @@ $app->post('/add/tags/', function ($request, $response, $args) {
 // Delete tags from article
 $app->post('/delete/tags/', function ($request, $response, $args) {
     if (!$this->auth->isLogin()) {
-        return $this->view->render($response, 'errors/403-forbidden.twig');
+        $this->view->render($response, 'errors/403-forbidden.twig');
+        return $response->withStatus(403);
     }
     $body = $request->getParsedBody();
     $tag = new Models\Tags;
