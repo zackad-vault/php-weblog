@@ -119,7 +119,6 @@ $app->get('/thumbnails/[{filename}]', function ($request, $response, $args) {
     $name = explode('-', $args['filename']);
     $article = new Models\Article;
     if (empty($article->getItemById($postId)) or $name[0] !== 'post') {
-        dump($article->getItemById($postId));
         $logo = file_get_contents(dirname(__DIR__) . '/public/images/logo.png');
         return $response->withHeader('Content-Type', 'image/png')->write($logo);
     }
