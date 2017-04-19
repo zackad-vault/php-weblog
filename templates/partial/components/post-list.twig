@@ -22,7 +22,7 @@ postlist: (array)
         {% if session.login and session.role == 'admin' %}
         <a href="/edit/article/{{ item.id }}"><i class="fa fa-pencil"></i></a> | 
         {% endif %}
-        <a href="/post/{{ item.id }}"> {{ item.title }} </a>
+        <a href="/post/{{ item.id }}/{{ item.slug }}/"> {{ item.title }} </a>
       </div>
       <div class="meta">
       {% if item.date_posted == item.date_modified %}
